@@ -10,8 +10,12 @@ def enqueue(val,queue,front,rear):
 
 def dequeue(queue,front,rear):
     val=queue[front]
-    front+=1
-    return front,val
+    if front == rear:
+        front=-1
+        rear=-1
+    else:
+        front+=1
+    return front,val,rear
 
 MAX_SIZE=int(input('Enter the maximum size of the queue: '))
 front,rear=-1,-1
@@ -28,7 +32,7 @@ while True:
         if front==-1:
             print('Queue is empty!!')
         else:
-            front,val=dequeue(queue,front,rear)
+            front,val,rear=dequeue(queue,front,rear)
             print(f'Popped element: {val}')
     elif op==3:
         break
