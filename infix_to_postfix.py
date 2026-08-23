@@ -21,7 +21,7 @@ def infix_to_postfix(a,b):
         elif element not in operators:
             b+=element
         elif element in operators:
-            while stack and stack[-1] in operators and precedence(stack[-1])>=precedence(element):
+            while stack and stack[-1] in operators and (precedence(stack[-1])>precedence(element) or (precedence(stack[-1])==precedence(element)) and element !='^'):
                 b+=stack.pop()
             stack.append(element)
     while stack:
