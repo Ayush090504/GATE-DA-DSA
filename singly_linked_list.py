@@ -46,11 +46,9 @@ def deletion_end(head):
 def traversal(head):
     if head is None:
         print('Linked List is empty!!')
-    elif head.next is None:
-        print(head.data)
     else:
         temp=head
-        while temp.next is None:
+        while temp is not None:
             print(temp.data)
             temp=temp.next
 
