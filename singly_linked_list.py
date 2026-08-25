@@ -52,9 +52,30 @@ def traversal(head):
             print(temp.data)
             temp=temp.next
 
+def insert_at_position(head):
+    position=int(input('Enter the position at which you want to inser the new node: '))
+    val=int(input('Enter the value to be inserted: '))
+    newNode=Node(val)
+    if position==1:
+        head=insertion_beginning(head,val)
+        return head
+    elif head==None:
+        print('Invalid Position')
+        return head
+    temp=head
+    for i in range(position-2):
+        if temp.next is None:
+            print('Invalid position!!')
+            return head
+        temp=temp.next
+    loc=temp.next
+    temp.next=newNode
+    newNode.next=loc
+    return head
+
 head=None
 while True:
-    op=int(input('Enter the operation to be performed (1-> Insert in the beginning, 2-> Insert in end, 3->Delete at start, 4->Delete at end, 5->Traverse, 6->Exit): '))
+    op=int(input('Enter the operation to be performed (1-> Insert in the beginning, 2-> Insert in end, 3->Insert at a given position 4->Delete at start, 5->Delete at end, 6->Traverse, 7->Exit): '))
     if op==1:
         val=int(input('Enter the value to be inserted: '))
         head=insertion_beginning(head,val)
@@ -62,12 +83,14 @@ while True:
         val=int(input('Enter the value to be inserted: '))
         head=insertion_end(head,val)
     elif op==3:
-        head=deletion_beginning(head)
+        head=insert_at_position(head)
     elif op==4:
-        head=deletion_end(head)
+        head=deletion_beginning(head)
     elif op==5:
-        traversal(head)
+        head=deletion_end(head)
     elif op==6:
+        traversal(head)
+    elif op==7:
         break
     else:
         print('Invalid Option!!!')
