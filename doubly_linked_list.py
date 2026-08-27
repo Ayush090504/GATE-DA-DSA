@@ -64,6 +64,12 @@ def forward_traversal(head):
     print()
     return head
 
+def backward_traversal(tail):
+    temp=tail
+    while temp is not None:
+        print(temp.data)
+        temp=temp.prev
+
 head=None
 while True:
     op=int(input('Enter the operation: '))
@@ -77,3 +83,11 @@ while True:
         head=delete_at_the_end(head)
     elif op == 5:
         head=forward_traversal(head)
+    elif op == 6:
+        if head is None:
+            print('Linked list is empty!!')
+        else:
+            tail=head
+            while tail.next is not None:
+                tail=tail.next
+            backward_traversal(tail)
