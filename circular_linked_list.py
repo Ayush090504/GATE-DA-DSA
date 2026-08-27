@@ -45,7 +45,34 @@ def traversal(head):
             break
     print()
     return head
-    
+
+def delete_at_beginning(head):
+    if head is None:
+        print('The linked list is empty!!')
+        return head
+    elif head.next==head:
+        head=None
+        return head
+    temp=head
+    while temp.next != head:
+        temp=temp.next
+    head=head.next
+    temp.next=head
+    return head
+
+def delete_at_end(head):
+    if head is None:
+        print('The linked list is empty!!')
+        return head
+    elif head.next == head:
+        head=None
+        return head
+    temp=head
+    while temp.next.next != head:
+        temp = temp.next
+    temp.next=head
+    return head
+
 head=None
 while True:
     op=int(input('Enter the operation to be performed: '))
@@ -55,3 +82,7 @@ while True:
         head=insert_at_the_end(head)
     elif op == 3:
         head=traversal(head)
+    elif op == 4:
+        head=delete_at_beginning(head)
+    elif op == 5:
+        head=delete_at_end(head)
