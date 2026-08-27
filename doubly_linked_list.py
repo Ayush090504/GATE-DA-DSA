@@ -69,6 +69,7 @@ def backward_traversal(tail):
     while temp is not None:
         print(temp.data)
         temp=temp.prev
+    print()
 
 head=None
 while True:
@@ -91,3 +92,5 @@ while True:
             while tail.next is not None:
                 tail=tail.next
             backward_traversal(tail)
+    elif op == 7:
+        break
